@@ -8,9 +8,12 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [macos-11]
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Select Xcode 13.2.1
+        run: sudo xcode-select -s "/Applications/Xcode_13.2.1.app"
+
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@master
@@ -41,4 +44,4 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: bottles
-          path: '*.bottle.*'
+          path: "*.bottle.*"

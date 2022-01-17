@@ -18,9 +18,9 @@ class Tmexclude < Formula
     (testpath/"foo.txt").write "Hello, world!"
     system bin/"tmexclude", "-e", testpath/"foo.txt"
     output = shell_output("/usr/bin/xattr #{testpath}/foo.txt")
-    asssert_match "com.apple.metadata:com_apple_backup_excludeItem", output
+    assert_match "com.apple.metadata:com_apple_backup_excludeItem", output
     system bin/"tmexclude", "-i", testpath/"foo.txt"
     output = shell_output("/usr/bin/xattr #{testpath}/foo.txt")
-    asssert_not_match "com.apple.metadata:com_apple_backup_excludeItem", output
+    refute_match "com.apple.metadata:com_apple_backup_excludeItem", output
   end
 end
