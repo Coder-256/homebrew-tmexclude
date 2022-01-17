@@ -15,7 +15,7 @@ class Tmexclude < Formula
   end
 
   test do
-    (testpath/"foo.txt").write "Hello world!"
+    (testpath/"foo.txt").write "Hello, world!"
     system bin/"tmexclude", "-e", testpath/"foo.txt"
     output = shell_output("/usr/bin/xattr #{testpath}/foo.txt")
     asssert_match "com.apple.metadata:com_apple_backup_excludeItem", output
